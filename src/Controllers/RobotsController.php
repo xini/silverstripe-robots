@@ -169,7 +169,7 @@ class RobotsController extends Controller
             $googleSitemap = GoogleSitemap::singleton();
             $isFiltered = (bool) $googleSitemap->config()->get('use_show_in_search');
             $filterFieldName = 'ShowInSearch';
-            if (method_exists(GoogleSitemap::class, 'getFilterFieldName')) {
+			if (GoogleSitemap::singleton()->hasMethod('getFilterFieldName')) {
                 $filterFieldName = $googleSitemap->getFilterFieldName();
             }
             if ($isFiltered) {

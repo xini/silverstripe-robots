@@ -23,7 +23,7 @@ Only:
 ---
 Symbiote\Multisites\Model\Site:
   extensions:
-    - Innoweb\Robots\Extensions\ConfigExtension
+    innowebRobotsConfig: Innoweb\Robots\Extensions\ConfigExtension
 
 ---
 Name: innoweb-robots-configured-multisites
@@ -33,7 +33,7 @@ Only:
 
 Fromholdio\ConfiguredMultisites\Model\Site:
   extensions:
-    - Innoweb\Robots\Extensions\ConfigExtension
+    innowebRobotsConfig: Innoweb\Robots\Extensions\ConfigExtension
 
 ---
 Name: innoweb-robots-nomultisites
@@ -44,4 +44,4 @@ Except:
 ---
 Silverstripe\SiteConfig\SiteConfig:
   extensions:
-    - Innoweb\Robots\Extensions\ConfigExtension
+    innowebRobotsConfig: Innoweb\Robots\Extensions\ConfigExtension

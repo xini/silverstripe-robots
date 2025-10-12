@@ -120,6 +120,7 @@ class ConfigExtension extends Extension
             $disallowedOutputField->displayIf('RobotsMode')->isEqualTo(RobotsController::MODE_DISALLOW);
         }
 
+		$this->owner->invokeWithExtensions('updateRobotsCMSFields', $fields);
         return $fields;
     }
 
@@ -136,10 +137,11 @@ class ConfigExtension extends Extension
         } elseif (class_exists('Fromholdio\ConfiguredMultisites\Multisites')) {
             $configs = \Fromholdio\ConfiguredMultisites\Model\Site::get();
         } else {
-            $configs = SiteConfig::get();
+			$class = get_class($this->owner);
+			$configs = $class::get()->limit(1);
         }
         // update configs if required
-        if ($configs && $configs->exists()) {
+		if ($configs->count() > 0) {
             foreach ($configs as $config) {
                 if (!$config->RobotsMode) {
                     if ($config->RobotsContent) {
