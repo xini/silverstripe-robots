@@ -120,7 +120,7 @@ class ConfigExtension extends Extension
             $disallowedOutputField->displayIf('RobotsMode')->isEqualTo(RobotsController::MODE_DISALLOW);
         }
 
-		$this->owner->invokeWithExtensions('updateRobotsCMSFields', $fields);
+        $this->owner->invokeWithExtensions('updateRobotsCMSFields', $fields);
         return $fields;
     }
 
@@ -137,11 +137,11 @@ class ConfigExtension extends Extension
         } elseif (class_exists('Fromholdio\ConfiguredMultisites\Multisites')) {
             $configs = \Fromholdio\ConfiguredMultisites\Model\Site::get();
         } else {
-			$class = get_class($this->owner);
-			$configs = $class::get()->limit(1);
+            $class = get_class($this->owner);
+            $configs = $class::get()->limit(1);
         }
         // update configs if required
-		if ($configs->count() > 0) {
+        if ($configs->count() > 0) {
             foreach ($configs as $config) {
                 if (!$config->RobotsMode) {
                     if ($config->RobotsContent) {
@@ -220,7 +220,7 @@ class ConfigExtension extends Extension
         $controller = RobotsController::create();
         $result = $controller->allow();
         SSViewer::set_themes($oldThemes);
-		return (string) $result;
+        return (string) $result;
     }
 
     public function getRenderedContentDisallow(): string
