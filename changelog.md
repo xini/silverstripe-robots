@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.1.0]
+
+* Allow different object to SiteConfig as config obj, defined by the object that has the extension applied to it
+* Add extension hook for cmsfield
+* Fix check for getFilterFieldName
+
 ## [6.0.0]
 
 * upgrade to Silverstripe 6
