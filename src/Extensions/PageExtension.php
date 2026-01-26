@@ -33,7 +33,7 @@ class PageExtension extends Extension
         } elseif (is_a(Controller::curr(), Security::class)) {
             $follow = "nofollow";
             $index = "noindex";
-        } elseif (Controller::curr()->hasMethod('data') && ($page = Controller::curr()->data()) && stripos($page->URLSegment ?? '', 'error') !== false) {
+        } elseif (Controller::curr() && Controller::curr()->hasMethod('data') && ($page = Controller::curr()->data()) && stripos($page->URLSegment ?? '', 'error') !== false) {
             $follow = "nofollow";
             $index = "noindex";
         } elseif ($this->getOwner()->hasExtension(\Wilr\GoogleSitemaps\Extensions\GoogleSitemapSiteTreeExtension::class)
