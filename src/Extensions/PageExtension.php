@@ -30,10 +30,13 @@ class PageExtension extends Extension
         if (RobotsController::create()->getActiveMode() == RobotsController::MODE_DISALLOW) {
             $follow = "nofollow";
             $index = "noindex";
-        } elseif (is_a(Controller::curr(), Security::class)) {
+        } elseif (Controller::curr() && is_a(Controller::curr(), Security::class)) {
             $follow = "nofollow";
             $index = "noindex";
-        } elseif (Controller::curr() && Controller::curr()->hasMethod('data') && ($page = Controller::curr()->data()) && is_a(Controller::curr(), \Fromholdio\Errored\Errored::class)) {
+        } elseif (Controller::curr() && is_a(Controller::curr(), \SilverStripe\ErrorPage\ErrorPageController::class)) {
+            $follow = "nofollow";
+            $index = "noindex";
+        } elseif (Controller::curr() && is_a(Controller::curr(), \Fromholdio\Errored\Errored::class)) {
             $follow = "nofollow";
             $index = "noindex";
         } elseif ($this->getOwner()->hasExtension(\Wilr\GoogleSitemaps\Extensions\GoogleSitemapSiteTreeExtension::class)
